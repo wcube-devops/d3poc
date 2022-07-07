@@ -10,7 +10,7 @@ function App() {
     async function getData() {
       let data = []
       const set = new Set()
-      const response = await fetch('../data/test.csv')
+      const response = await fetch('data/test.csv')
       const reader = response.body.getReader()
       const result = await reader.read() // raw array
       const decoder = new TextDecoder('utf-8')
@@ -59,6 +59,7 @@ function App() {
   if (isLoading) {
     return <p>loading</p>
   }
+  console.log(parsedData)
   return (
     <div className="App">
       <ForceGraph linksData={parsedData.links} nodesData={parsedData.nodes} nodeHoverTooltip={hoverToolTip}/>
