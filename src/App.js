@@ -25,10 +25,9 @@ function App() {
           set.add(subArr[i])
         }
       })
-
       set.forEach((val) => {
         map[`${val}`] = idx
-        let obj = {id: idx++, name: val}
+        let obj = {id: idx++, name: val, gender: val !== "penny" ? "male" : "female"}
         data.push(obj)
       })
 
