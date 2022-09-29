@@ -49,7 +49,7 @@ export function runForceGraphPixi(
     div.transition().duration(200).style("opacity", 0);
   };
 
-  const colorScale = (num) => parseInt(color().slice(1), 16);
+  const colorScale = (num) => parseInt(color().slice(num), 16);
 
   function onDragStart(evt) {
     viewport.plugins.pause('drag');
@@ -118,11 +118,11 @@ export function runForceGraphPixi(
 
   nodes.forEach((node) => {
     const boundDrag = onDragMove.bind(node);
-    const {name} = node;
+    const {name, gender} = node;
     node.gfx = new PIXI.Graphics();
     node.gfx.lineStyle(1, 0xD3D3D3);
-    node.gfx.beginFill(colorScale(node.id));
-    node.gfx.drawCircle(0, 0, 24);
+    node.gfx.beginFill(gender == "male" ? 0xff6437 : 0x51f1e3);
+    node.gfx.drawCircle(0, 0, 30);
     node.gfx.endFill();
     node.gfx
       // events for click
